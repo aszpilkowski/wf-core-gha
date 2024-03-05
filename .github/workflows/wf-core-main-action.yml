@@ -1,7 +1,7 @@
 name: wf-core-gha
 on:
     schedule:
-    - cron: '0 6 * * *'
+    - cron: '24 13 * * *'
 jobs:
     Build-WF-Core-GHA:
         runs-on: ubuntu-latest
