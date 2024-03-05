@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a610c499-e058-4305-8729-28ac0fd148a7" name="Changes" comment="add sample code">
+    <list default="true" id="a610c499-e058-4305-8729-28ac0fd148a7" name="Changes" comment="update workflow">
       <change beforePath="$PROJECT_DIR$/.github/workflows/remote_OWASP_trigger_workflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/remote_OWASP_trigger_workflow.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -91,7 +91,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709646455404</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update workflow">
+      <option name="closed" value="true" />
+      <created>1709647240571</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709647240571</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,6 +115,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add sample code" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sample code" />
+    <MESSAGE value="update workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="update workflow" />
   </component>
 </project>
