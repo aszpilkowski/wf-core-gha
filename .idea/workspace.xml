@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a610c499-e058-4305-8729-28ac0fd148a7" name="Changes" comment="update workflow">
       <change beforePath="$PROJECT_DIR$/.github/workflows/remote_OWASP_trigger_workflow.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/remote_OWASP_trigger_workflow.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709647666418</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update workflow">
+      <option name="closed" value="true" />
+      <created>1709647744576</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709647744576</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
