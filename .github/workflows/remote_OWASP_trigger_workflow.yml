@@ -15,6 +15,7 @@ jobs:
           event_type="wf-core-owasp-trigger"
           service="${{ github.event.inputs.target_service }}"
           version="${{ github.event.inputs.target_version }}"
+          echo ${{ secrets.GITHUB_TOKEN }}
           
           curl -L \
             -X POST \
