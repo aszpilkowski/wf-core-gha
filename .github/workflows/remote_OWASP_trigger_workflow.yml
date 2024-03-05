@@ -10,12 +10,12 @@ jobs:
       - name: Trigger Workflow in Another Repository
         run: |
           # Set the required variables
-          repo_owner="aszpilkowski" 
-          repo_name="wf-gha"  
-          event_type="wf-core-owasp-trigger" 
+          repo_owner="aszpilkowski"
+          repo_name="wf-gha"
+          event_type="wf-core-owasp-trigger"
           service=${{ github.event.inputs.target_service }}"
           version="${{ github.event.inputs.target_version }}"
-  
+          
           curl -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
