@@ -1,7 +1,5 @@
 name: wf-core-gha
-on:
-    schedule:
-    - cron: '24 13 * * *'
+on: workflow_dispatch
 jobs:
     Build-WF-Core-GHA:
         runs-on: ubuntu-latest
