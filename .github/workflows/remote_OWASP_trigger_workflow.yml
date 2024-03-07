@@ -4,6 +4,7 @@ on: workflow_dispatch
 
 jobs:
   trigger:
+    permissions: write-all
     runs-on: ubuntu-latest
     
     steps:
