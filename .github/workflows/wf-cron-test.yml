@@ -1,4 +1,4 @@
-name: Trigger-WF-OWASP-Workflow
+name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
