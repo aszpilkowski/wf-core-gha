@@ -1,0 +1,13 @@
+name: Trigger-WF-OWASP-Workflow
+
+on:
+  schedule:
+    - cron: '50 11 * * *'
+
+jobs:
+  wf_21:
+    uses: aszpilkowski/wf-core-gha/.github/workflows/remote_trigger_OWASP.yml@main
+  wf_26:
+    uses: aszpilkowski/wf-core-gha/.github/workflows/remote_trigger_OWASP.yml@wf_26
+  wf_31:
+    uses: aszpilkowski/wf-core-gha/.github/workflows/remote_trigger_OWASP.yml@wf_31
