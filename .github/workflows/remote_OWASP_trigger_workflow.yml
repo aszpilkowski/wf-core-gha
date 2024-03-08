@@ -19,6 +19,8 @@ jobs:
         run: mvn -B package --file pom.xml
       - name: Dependency check
         uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core
         with:
           project: 'wf-core-gha'
