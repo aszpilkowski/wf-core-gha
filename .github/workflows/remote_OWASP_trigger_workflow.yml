@@ -25,10 +25,9 @@ jobs:
         with:
           project: 'wf-core-gha'
           path: '.'
-          format: 'HTML'
+          format: 'ALL'
           out: 'reports'
           args: >
-            --failOnCVSS 7
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
       - name: Upload Test results
