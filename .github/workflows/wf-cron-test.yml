@@ -2,7 +2,7 @@ name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
-    - cron: '40 11 * * *'
+    - cron: '45 10 * * *'
 
 jobs:
   wf_21:
