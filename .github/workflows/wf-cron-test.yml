@@ -2,7 +2,7 @@ name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
-    - cron: '40 8 * * *'
+    - cron: '55 9 * * *'
 
 jobs:
   wf_21:
@@ -10,8 +10,6 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/wf_26' # Replace branch1 and branch2 with your specific branches
     
     steps:
-      - name: echo github.ref
-        run: echo ${{ github.ref }}
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
@@ -19,6 +17,7 @@ jobs:
           java-version: '17'
           cache: 'maven'
           cache-dependency-path: 'pom.xml' # optional
+          ref: 'wf_26'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
         
