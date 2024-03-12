@@ -15,6 +15,14 @@ jobs:
           java-version: '17'
           cache: 'maven'
           cache-dependency-path: 'pom.xml' # optional
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: wf-core-cache
+          restore-keys: wf-core-cache
+      
       - name: Build with Maven
         run: mvn -B package --file pom.xml
         
