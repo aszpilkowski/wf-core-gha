@@ -10,18 +10,5 @@ jobs:
     steps:
       - name: echo ref
         run: echo ${{ github.ref }}
-      - uses: .github/workflows/wf-core-main-action.yml@main
-          
-  cron_job_wf_26:
-    runs-on: ubuntu-latest
+      - uses: ./.github/workflows/wf-core-main-action.yml@main
 
-    steps:
-      - uses: .github/workflows/wf-core-main-action.yml@wf_26
-
-  cron_job_wf_31:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: .github/workflows/wf-core-main-action.yml@wf_31
-        
-      # Add your job steps here
