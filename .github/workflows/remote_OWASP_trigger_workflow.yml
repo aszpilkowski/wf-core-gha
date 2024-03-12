@@ -28,7 +28,7 @@ jobs:
         run: mvn clean install --file pom.xml
 
       - name: Upload Maven dependencies cache
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: maven-cache
           path: ~/.m2/repository
