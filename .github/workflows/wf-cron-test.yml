@@ -1,25 +1,27 @@
 name: WF Cron Test Reusable Workflow
 
-on:
-  schedule:
-    - cron: '45 12 * * *'
+on: workflow_dispatch
 
 jobs:
-  wf_21:
+  cron_job_main:
     runs-on: ubuntu-latest
     if: ${{ github.ref }} == 'refs/heads/main' || ${{ github.ref }} == 'refs/heads/wf_26'
     
     steps:
       - name: echo ref
         run: echo ${{ github.ref }}
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'maven'
-          cache-dependency-path: 'pom.xml' # optional
-      - name: Build with Maven
-        run: mvn -B clean install --file pom.xml
+      - uses: .github/workflows/wf-core-main-action.yml@main
+          
+  cron_job_wf_26:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: .github/workflows/wf-core-main-action.yml@wf_26
+
+  cron_job_wf_31:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: .github/workflows/wf-core-main-action.yml@wf_31
         
       # Add your job steps here
