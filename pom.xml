@@ -12,7 +12,7 @@
 
   <groupId>org.example</groupId>
   <artifactId>wf-core-gha</artifactId>
-  <version>1.0-SNAPSHOT-PSI</version>
+  <version>1.0.26-SNAPSHOT-PSI</version>
 
   <packaging>pom</packaging>
 
