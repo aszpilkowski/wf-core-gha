@@ -162,7 +162,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: maven-cache-develop
-          path: ~/.m2/repository
+          path: '~/.m2/repository/**'
 
   run_wf_workflow:
     permissions: write-all
