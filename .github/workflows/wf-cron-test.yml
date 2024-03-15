@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: "main"
+          path: "develop"
           ref: main
         
       - uses: actions/setup-java@v4
@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-maven-
       
       - name: Build with Maven
-        run: mvn clean install --file ${{ github.workspace }}/main/pom.xml
+        run: mvn clean install --file ${{ github.workspace }}/develop/pom.xml
 
       - name: Create reports directory
         run: mkdir -p reports/main
@@ -41,11 +41,11 @@ jobs:
         with:
           path: '.'
           format: 'ALL'
-          out: 'reports/main'
+          out: 'reports/develop'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            -s "main/**"
+            -s "develop/**"
 
   wf_core_26:
     permissions: write-all
