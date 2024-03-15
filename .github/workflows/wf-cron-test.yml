@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: "wf-core-gha/wf_26"
+          path: "wf_26"
           ref: main
       - uses: actions/setup-java@v4
         with:
@@ -90,7 +90,7 @@ jobs:
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            -s "${{ github.workspace }}/wf_26/**"
+            -s "wf_26/**"
     
   wf_core_31:
     permissions: write-all
@@ -134,7 +134,7 @@ jobs:
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            -s "${{ github.workspace }}/wf_31/**"
+            -s "wf_31/**"
 
   upload_reports:
     permissions: write-all
