@@ -1,8 +1,6 @@
 name: WF Cron Test Reusable Workflow
 
-on:
-  schedule:
-    - cron: '* 11 * * *'
+on: workflow_dispatch
 
 jobs: 
   wf_core_main:
