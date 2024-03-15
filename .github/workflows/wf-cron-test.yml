@@ -2,7 +2,7 @@ name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
-    - cron: '10 9 * * *'
+    - cron: '30 9 * * *'
 
 jobs: 
   wf_core_main:
@@ -44,7 +44,7 @@ jobs:
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            --scan "${{ github.workspace }}/main"
+            -s "${{ github.workspace }}/main"
 
   wf_core_26:
     permissions: write-all
@@ -85,7 +85,7 @@ jobs:
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            --scan "${{ github.workspace }}/wf_26"
+            -s "${{ github.workspace }}/wf_26"
     
   wf_core_31:
     permissions: write-all
@@ -126,7 +126,7 @@ jobs:
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            --scan "${{ github.workspace }}/wf_31"
+            -s "${{ github.workspace }}/wf_31"
 
   upload_reports:
     permissions: write-all
