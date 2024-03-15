@@ -99,7 +99,7 @@ jobs:
       - name: Upload dependency check results
         uses: actions/upload-artifact@master
         with:
-          name: dependency-check-report-main
+          name: dependency-check-report-26
           path: 'reports/wf_26'
     
   wf_core_31:
@@ -148,7 +148,7 @@ jobs:
       - name: Upload dependency check results
         uses: actions/upload-artifact@master
         with:
-          name: dependency-check-report-main
+          name: dependency-check-report-31
           path: 'reports/wf_31'
 
 
