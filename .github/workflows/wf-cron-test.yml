@@ -32,6 +32,9 @@ jobs:
       - name: Build with Maven
         run: mvn clean install --file ${{ github.workspace }}/main/pom.xml
 
+      - name: Create reports directory
+        run: mkdir -p reports/main
+
       - name: Dependency check
         uses: dependency-check/Dependency-Check_Action@main
         env:
@@ -73,6 +76,9 @@ jobs:
       - name: Build with Maven
         run: mvn clean install --file ${{ github.workspace }}/wf_26/pom.xml
 
+      - name: Create reports directory
+        run: mkdir -p reports/wf-26
+      
       - name: Dependency check
         uses: dependency-check/Dependency-Check_Action@main
         env:
@@ -114,6 +120,9 @@ jobs:
       - name: Build with Maven
         run: mvn clean install --file ${{ github.workspace }}/wf_31/pom.xml
 
+      - name: Create reports directory
+        run: mkdir -p reports/wf_31
+        
       - name: Dependency check
         uses: dependency-check/Dependency-Check_Action@main
         env:
