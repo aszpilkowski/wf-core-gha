@@ -45,7 +45,7 @@ jobs:
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            -s "${{ github.workspace }}/main/**"
+            -s "main/**"
 
   wf_core_26:
     permissions: write-all
@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: "wf_26"
+          path: "wf-core-gha/wf_26"
           ref: main
       - uses: actions/setup-java@v4
         with:
