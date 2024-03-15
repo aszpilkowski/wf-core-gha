@@ -39,6 +39,7 @@ jobs:
           JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core-main
         with:
+          project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
           out: 'reports/develop'
@@ -82,6 +83,7 @@ jobs:
           JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core-26
         with:
+          project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
           out: 'reports/wf_26'
@@ -125,6 +127,7 @@ jobs:
           JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core-31
         with:
+          project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
           out: 'reports/wf_31'
