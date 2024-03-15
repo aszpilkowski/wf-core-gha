@@ -30,12 +30,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean install --file ${{ github.workspace }}/develop/pom.xml
       
-      - name: Upload Maven dependencies cache
-        uses: actions/upload-artifact@v4
-        with:
-          name: maven-cache-develop
-          path: ~/.m2/repository
-      
       - name: Create reports directory
         run: mkdir -p reports/main
 
@@ -84,12 +78,6 @@ jobs:
       
       - name: Build with Maven
         run: mvn clean install --file ${{ github.workspace }}/wf_26/pom.xml
-
-      - name: Upload Maven dependencies cache
-        uses: actions/upload-artifact@v4
-        with:
-          name: maven-cache-wf_core_26
-          path: ~/.m2/repository
 
       - name: Create reports directory
         run: mkdir -p reports/wf-26
@@ -140,12 +128,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean install --file ${{ github.workspace }}/wf_31/pom.xml
 
-      - name: Upload Maven dependencies cache
-        uses: actions/upload-artifact@v4
-        with:
-          name: maven-cache-wf_core_31
-          path: ~/.m2/repository
-
       - name: Create reports directory
         run: mkdir -p reports/wf_31
         
@@ -169,11 +151,21 @@ jobs:
           name: dependency-check-report-31
           path: 'reports/wf_31'
 
+  upload_maven_cache:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    needs: [ wf_core_main, wf_core_26, wf_core_31 ]
+    steps:
+      - name: Upload Maven dependencies cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: maven-cache-develop
+          path: ~/.m2/repository
 
   run_wf_workflow:
     permissions: write-all
     runs-on: ubuntu-latest
-    needs: [ wf_core_main, wf_core_26, wf_core_31 ]
+    needs: [ upload_maven_cache ]
     steps:
       - name: Trigger Workflow in Another Repository
         run: |
