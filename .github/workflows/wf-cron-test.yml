@@ -158,11 +158,15 @@ jobs:
     steps:
       - name: Echo PWD
         run: pwd
+      - name: Echo m2
+        run: ls -la ~/.m2 
+      - name: Echo m2 repo
+        run: ls -la ~/.m2/repository 
       - name: Upload Maven dependencies cache
         uses: actions/upload-artifact@v4
         with:
           name: maven-cache-develop
-          path: '~/.m2/repository/**'
+          path: ~/.m2/repository
 
   run_wf_workflow:
     permissions: write-all
