@@ -2,7 +2,7 @@ name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
-    - cron: '45 9 * * *'
+    - cron: '5 10 * * *'
 
 jobs: 
   wf_core_main:
@@ -40,7 +40,7 @@ jobs:
           project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
-          out: 'reports/main'
+          out: '${{ github.workspace }}/reports/main'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
@@ -81,7 +81,7 @@ jobs:
           project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
-          out: 'reports/wf_26'
+          out: '${{ github.workspace }}/reports/wf_26'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
@@ -122,7 +122,7 @@ jobs:
           project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
-          out: 'reports/wf_31'
+          out: '${{ github.workspace }}/reports/wf_31'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
