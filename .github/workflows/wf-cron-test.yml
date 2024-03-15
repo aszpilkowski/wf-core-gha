@@ -2,7 +2,7 @@ name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
-    - cron: '40 10 * * *'
+    - cron: '* 11 * * *'
 
 jobs: 
   wf_core_main:
@@ -41,7 +41,6 @@ jobs:
           JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core-main
         with:
-          project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
           out: 'reports/main'
@@ -85,7 +84,6 @@ jobs:
           JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core-26
         with:
-          project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
           out: 'reports/wf_26'
@@ -129,7 +127,6 @@ jobs:
           JAVA_HOME: /opt/jdk
         id: dependency-check-wf-core-31
         with:
-          project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
           out: 'reports/wf_31'
