@@ -2,7 +2,7 @@ name: WF Cron Test Reusable Workflow
 
 on:
   schedule:
-    - cron: '23 10 * * *'
+    - cron: '40 10 * * *'
 
 jobs: 
   wf_core_main:
@@ -14,6 +14,7 @@ jobs:
         with:
           path: "main"
           ref: main
+        
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -40,7 +41,7 @@ jobs:
           project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
-          out: '${{ github.workspace }}/reports/main'
+          out: 'reports/main'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
@@ -76,12 +77,12 @@ jobs:
         uses: dependency-check/Dependency-Check_Action@main
         env:
           JAVA_HOME: /opt/jdk
-        id: dependency-check-wf-core-main
+        id: dependency-check-wf-core-26
         with:
           project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
-          out: '${{ github.workspace }}/reports/wf_26'
+          out: 'reports/wf_26'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
@@ -117,12 +118,12 @@ jobs:
         uses: dependency-check/Dependency-Check_Action@main
         env:
           JAVA_HOME: /opt/jdk
-        id: dependency-check-wf-core-main
+        id: dependency-check-wf-core-31
         with:
           project: 'wf-core-gha'
           path: '.'
           format: 'ALL'
-          out: '${{ github.workspace }}/reports/wf_31'
+          out: 'reports/wf_31'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
@@ -131,6 +132,7 @@ jobs:
   upload_reports:
     permissions: write-all
     runs-on: ubuntu-latest
+    needs: [wf_core_main, wf_core_26, wf_core_31]
     steps:
       - name: Upload Test results
         uses: actions/upload-artifact@master
@@ -141,7 +143,7 @@ jobs:
   run_wf_workflow:
     permissions: write-all
     runs-on: ubuntu-latest
-
+    needs: [ upload_reports ]
     steps:
       - name: Trigger Workflow in Another Repository
         run: |
