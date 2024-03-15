@@ -145,7 +145,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: dependency-check-report-main
-          path: reports
+          path: '/github/workspace/reports/**'
 
   run_wf_workflow:
     permissions: write-all
