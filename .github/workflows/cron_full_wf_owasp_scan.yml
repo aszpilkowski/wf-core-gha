@@ -1,0 +1,126 @@
+name: WF-Core/WF OWASP Report
+
+on: workflow_dispatch
+
+jobs: 
+  wf_core_main:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: "develop"
+          ref: main
+        
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+      
+      - name: Build with Maven
+        run: mvn clean install --file ${{ github.workspace }}develop/pom.xml
+
+      - name: Dependency check
+        uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: /opt/jdk
+        id: dependency-check-report-wf-core-main
+        with:
+          project: 'wf-core-gha_develop'
+          path: '.'
+          format: 'ALL'
+          out: 'reports/develop'
+          args: >
+            --enableRetired
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            -s "develop/**"
+
+      - name: Upload dependency check results
+        uses: actions/upload-artifact@master
+        with:
+          name: dependency-check-report-wf-core-main
+          path: 'reports/develop'
+
+  wf_core_26:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: "wf_26"
+          ref: main
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+      
+      - name: Build with Maven
+        run: mvn clean install --file ${{ github.workspace }}/wf_26/pom.xml
+
+      - name: Create reports directory
+        run: mkdir -p reports/wf-26
+      
+      - name: Dependency check
+        uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: /opt/jdk
+        id: dependency-check-report-wf-core-26
+        with:
+          project: 'wf-core-gha_26'
+          path: '.'
+          format: 'ALL'
+          out: 'reports/wf_26'
+          args: >
+            --enableRetired
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            -s "wf_26/**"
+            
+      - name: Upload dependency check results
+        uses: actions/upload-artifact@master
+        with:
+          name: dependency-check-report-wf-core-26
+          path: 'reports/wf_26'
+    
+  wf_core_31:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: "wf_31"
+          ref: wf_31
+        
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+      
+      - name: Build with Maven
+        run: mvn clean install --file ${{ github.workspace }}/wf_31/pom.xml
+        
+      - name: Dependency check
+        uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: /opt/jdk
+        id: dependency-check-report-wf-core-31
+        with:
+          project: 'wf-core-gha_31'
+          path: '.'
+          format: 'ALL'
+          out: 'reports/wf_31'
+          args: >
+            --enableRetired
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            -s "wf_31/**"
+        
+      - name: Upload dependency check results
+        uses: actions/upload-artifact@master
+        with:
+          name: dependency-check-report-wf-core-31
+          path: 'reports/wf_31'
