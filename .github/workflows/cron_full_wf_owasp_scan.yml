@@ -20,7 +20,7 @@ jobs:
           cache: 'maven'
       
       - name: Build with Maven
-        run: mvn clean install --file ${{ github.workspace }}develop/pom.xml
+        run: mvn clean install --file ${{ github.workspace }}/develop/pom.xml
 
       - name: Dependency check
         uses: dependency-check/Dependency-Check_Action@main
