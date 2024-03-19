@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: "develop"
+          path: "wf_core/main"
           ref: main
         
       - uses: actions/setup-java@v4
@@ -20,10 +20,10 @@ jobs:
           cache: 'maven'
       
       - name: Build with Maven
-        run: mvn clean install --file ${{ github.workspace }}/develop/pom.xml
+        run: mvn clean install --file ${{ github.workspace }}/wf_core/main/pom.xml
 
       - name: Create reports directory
-        run: mkdir -p reports/main
+        run: mkdir -p reports/wf_core/main
         
       - name: Dependency check
         uses: dependency-check/Dependency-Check_Action@main
@@ -34,17 +34,62 @@ jobs:
           project: 'wf-core-gha_develop'
           path: '.'
           format: 'ALL'
-          out: 'reports/develop'
+          out: 'reports/wf_core/main'
           args: >
             --enableRetired
             --nvdApiKey ${{ secrets.NVD_API_KEY }}
-            -s "develop/**"
+            -s "wf_core/main/**"
 
       - name: Upload dependency check results
         uses: actions/upload-artifact@master
         with:
           name: dependency-check-report-wf-core-main
-          path: 'reports/develop'
+          path: 'reports/wf_core/main'
+
+  wf_main:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    needs: [ wf_core_main ]
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: 'aszpilkowski/wf-gha'
+          path: "wf/main"
+          ref: main
+        
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+      
+      - name: Build with Maven
+        run: mvn clean install --file ${{ github.workspace }}/wf/main/pom.xml
+
+      - name: Create reports directory
+        run: mkdir -p reports/wf/main
+        
+      - name: Dependency check
+        uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: /opt/jdk
+        id: dependency-check-report-wf-main
+        with:
+          project: 'wf-gha_main'
+          path: '.'
+          format: 'ALL'
+          out: 'reports/wf/main'
+          args: >
+            --enableRetired
+            --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            -s "wf/main/**"
+
+      - name: Upload dependency check results
+        uses: actions/upload-artifact@master
+        with:
+          name: dependency-check-report-wf-core-main
+          path: 'reports/wf/main'
 
   wf_core_26:
     permissions: write-all
